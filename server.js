@@ -5,16 +5,7 @@ var express = require('express');
 var app = express();
 var PORT = 3000;
 
-var middleware = {
-  requireAuthentication: function (req, res, next) {
-      console.log('Sup! Private route hea!');
-      next();
-  },
-    logger: function (req, res, next) {
-        console.log(`Request: ${new Date().toString()} ${req.method} URL: ${req.originalUrl}`);
-        next();
-    }
-};
+var middleware = require('./middleware');
 
 app.use(middleware.logger);
 // this will run the middleware at any route within the app
